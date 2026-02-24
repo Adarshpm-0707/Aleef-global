@@ -28,8 +28,8 @@ function useCountUp(target, duration = 2000) {
 export default function Stats() {
   const items = [
     { k: "Years of Experience", v: 30 },
-    { k: "Countries", v: 200 },
-    { k: "Shipments Delivered", v: 1000 },
+    { k: "Countries", v:12 },
+    { k: "Shipments Delivered", v: 100 },
   ];
 
   const counters = items.map((it) => useCountUp(it.v, 2000));
