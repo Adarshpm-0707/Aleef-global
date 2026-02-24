@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+// Existing Assets
 import p1 from "../assets/Fruits.png";
 import p2 from "../assets/vegetables.jpg";
 import p3 from "../assets/Animal.jpg";
@@ -13,7 +14,19 @@ import p9 from "../assets/Salt.png";
 import p10 from "../assets/Indian spices.png";
 import p12 from "../assets/Rice.png";
 
+// New Assets from Image (Ensure these files exist in your assets folder)
+import pMarine from "../assets/marine-oil-gas.jpg";
+import pMEP from "../assets/mep.jpg";
+import pAviation from "../assets/aviation.jpg";
+import pBuilding from "../assets/building-materials.jpg";
+import pInteriors from "../assets/interiors.jpg";
+import pIT from "../assets/it-telecom.jpg";
+import pKitchen from "../assets/industrial-kitchen.jpg";
+import pFire from "../assets/fire-safety.jpg";
+import pSecurity from "../assets/safety-security.jpg";
+
 const products = [
+  // Original Products
   { title: "Fruits", img: p1 },
   { title: "Vegetables", img: p2 },
   { title: "Animal Feed", img: p3 },
@@ -24,6 +37,17 @@ const products = [
   { title: "Salt", img: p9 },
   { title: "Indian Spices", img: p10 },
   { title: "Rice", img: p12 },
+  
+  // New Products from Image
+  { title: "Marine, Oil and Gas", img: pMarine },
+  { title: "MEP (Mechanical, Electrical, and Plumbing)", img: pMEP },
+  { title: "Aviation Industry Supplies", img: pAviation },
+  { title: "Building Materials", img: pBuilding },
+  { title: "Home & Office Interior Products", img: pInteriors },
+  { title: "IT and Telecommunication", img: pIT },
+  { title: "Industrial & Domestic Kitchen", img: pKitchen },
+  { title: "Fire and Safety", img: pFire },
+  { title: "Safety and Security", img: pSecurity },
 ];
 
 export default function ProductsGrid() {
@@ -57,7 +81,6 @@ export default function ProductsGrid() {
           -webkit-tap-highlight-color: transparent;
         }
 
-        /* image fills and starts slightly zoomed to look immersive */
         .product-img {
           transform: scale(1.08);
           transition: transform 420ms cubic-bezier(.2,.9,.3,1), filter 420ms, opacity 420ms;
@@ -65,7 +88,6 @@ export default function ProductsGrid() {
           display: block;
         }
 
-        /* overlay default */
         .product-overlay {
           transition: background 300ms ease, backdrop-filter 300ms ease, opacity 300ms ease;
           background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 70%);
@@ -73,7 +95,6 @@ export default function ProductsGrid() {
           opacity: 1;
         }
 
-        /* Hover / focus: stronger mask */
         .product-btn:hover .product-overlay,
         .product-btn:focus .product-overlay,
         .product-btn:active .product-overlay {
@@ -81,7 +102,6 @@ export default function ProductsGrid() {
           backdrop-filter: blur(3px) saturate(1.05);
         }
 
-        /* On hover blur/darken and zoom image for masked effect */
         .product-btn:hover .product-img,
         .product-btn:focus .product-img,
         .product-btn:active .product-img {
@@ -89,7 +109,6 @@ export default function ProductsGrid() {
           filter: brightness(0.82) saturate(0.98);
         }
 
-        /* Title base */
         .product-title {
           display: inline-block;
           transform: translateY(0) scale(1);
@@ -104,7 +123,6 @@ export default function ProductsGrid() {
           will-change: transform, opacity;
         }
 
-        /* animated underline */
         .product-title::after {
           content: "";
           position: absolute;
@@ -120,7 +138,6 @@ export default function ProductsGrid() {
           opacity: 0;
         }
 
-        /* Title emphasis while hovered/focused */
         .product-btn:hover .product-title,
         .product-btn:focus .product-title,
         .product-btn:active .product-title {
@@ -137,7 +154,6 @@ export default function ProductsGrid() {
           opacity: 1;
         }
 
-        /* accessibility focus outline */
         .product-btn:focus {
           box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
           outline: none;
@@ -160,10 +176,10 @@ export default function ProductsGrid() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -25, transition: { duration: 0.35 } }}
-            className="container section"
+            className="container section py-10"
           >
-            <div className="max-w-6xl mx-auto">
-              <h3 className="mb-5 text-lg md:text-2xl fw-bold font-semibold">
+            <div className="max-w-6xl mx-auto px-4">
+              <h3 className="mb-8 text-2xl md:text-3xl font-bold">
                 Our Products
               </h3>
 
@@ -198,16 +214,14 @@ export default function ProductsGrid() {
 
                       <div
                         className="product-overlay absolute inset-0"
-                        style={{
-                          zIndex: 2,
-                        }}
+                        style={{ zIndex: 2 }}
                       />
 
                       <div
-                        className="absolute inset-0 flex items-center justify-center px-3"
+                        className="absolute inset-0 flex items-center justify-center px-4"
                         style={{ zIndex: 3 }}
                       >
-                        <span className="product-title block text-white text-sm md:text-base font-semibold text-center drop-shadow-sm">
+                        <span className="product-title block text-white text-xs sm:text-sm md:text-base font-semibold text-center drop-shadow-md">
                           {product.title}
                         </span>
                       </div>
@@ -216,10 +230,7 @@ export default function ProductsGrid() {
                         className="absolute inset-0 pointer-events-none"
                         style={{
                           zIndex: 1,
-                          boxShadow:
-                            "inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 18px rgba(2,6,23,0.06)",
-                          transition:
-                            "box-shadow .36s ease, transform .36s ease",
+                          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 18px rgba(2,6,23,0.06)",
                         }}
                       />
                     </motion.button>
